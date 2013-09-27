@@ -23,7 +23,7 @@ define( [ 'jsOOP/Class' ], function( Class ) {
 	and `{{#crossLink "Enum.Base/ordinal:property"}}{{/crossLink}}`. 
 	__`value`__ is a string
 	which matches the element of the array. __`ordinal`__ is the index the 
-	symbol was defined at in the enumeration.
+	symbol was defined at in the enumeration. 
 
 	The resulting Enum object (in the above case, Days) also has some utility methods,
 	like fromValue(string) and the values property to access the array of symbols.
@@ -35,6 +35,9 @@ define( [ 'jsOOP/Class' ], function( Class ) {
 	parameter. This is the class that each symbol will use. Then, if any symbols
 	are given as an Array (instead of string), it will be treated as an array of arguments
 	to the base class. The first argument should always be the desired key of that symbol.
+
+	Note that __`ordinal`__ is added dynamically
+	after the symbol is created; so it can't be used in the symbol's constructor.
 
 	#### Advanced Usage
 		var Days = new Enum([ 
@@ -65,6 +68,27 @@ define( [ 'jsOOP/Class' ], function( Class ) {
 
 	This method will throw an error if you try to specify a class which does
 	not extend from `{{#crossLink "Enum.Base"}}{{/crossLink}}`.
+
+	#### Shorthand
+
+	You can also omit the `new Class` and pass a descriptor, thus reducing the need to 
+	explicitly require the Class module. Further, if you are passing a descriptor that
+	does not have `Extends` defined, it will default to
+	`{{#crossLink "Enum.Base"}}{{/crossLink}}`.
+	
+		var Icons = new Enum([ 
+				'Open',
+				'Save',
+				'Help',
+				'New'
+			], {
+
+				path: function( retina ) {
+					return "icons/" + this.value.toLowerCase() + (retina ? "@2x" : "") + ".png";
+				}
+			}
+		);
+
 
 	@class Enum
 	@constructor 
