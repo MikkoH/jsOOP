@@ -1,4 +1,4 @@
-define( [ 'Class' ], function( Class ) {
+define( [ 'jsOOP/Class' ], function( Class ) {
 
 	/**
 	The Enum class, which holds a set of constants in a fixed order.
@@ -112,6 +112,14 @@ define( [ 'Class' ], function( Class ) {
 	var Enum = function ( elements, base ) {
 		if (!base)
 			base = Enum.Base;
+
+		//The user is omitting Class, inject it here
+		if (typeof base === "object") {
+			//if we didn't specify a subclass.. 
+			if (!base.Extends)
+				base.Extends = Enum.Base;
+			base = new Class(base);
+		}
 		
 		var ret = new EnumResult();
 
