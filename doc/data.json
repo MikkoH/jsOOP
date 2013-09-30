@@ -6,8 +6,8 @@
         "url": ""
     },
     "files": {
-        "src/jsOOP/Enum.js": {
-            "name": "src/jsOOP/Enum.js",
+        "lib/Enum.js": {
+            "name": "lib/Enum.js",
             "modules": {},
             "classes": {
                 "Enum": 1,
@@ -27,7 +27,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 3,
             "description": "The Enum class, which holds a set of constants in a fixed order.\n\n#### Basic Usage:\n\tvar Days = new Enum([ \n\t\t\t'Monday',\n\t\t\t'Tuesday',\n\t\t\t'Wednesday',\n\t\t\t'Thursday',\n\t\t\t'Friday',\n\t\t\t'Saturday',\n\t\t\t'Sunday'\n\t]);\n\n\tconsole.log( Days.Monday === Days.Tuesday ); // => false\n\tconsole.log( Days.values[1] ) // => the 'Tuesday' symbol object\n\nEach enum *symbol* is an object which extends from the `{{#crossLink \"Enum.Base\"}}{{/crossLink}}` \nclass. This base\nclass has  properties like `{{#crossLink \"Enum.Base/value:property\"}}{{/crossLink}}`  \nand `{{#crossLink \"Enum.Base/ordinal:property\"}}{{/crossLink}}`. \n__`value`__ is a string\nwhich matches the element of the array. __`ordinal`__ is the index the \nsymbol was defined at in the enumeration. \n\nThe resulting Enum object (in the above case, Days) also has some utility methods,\nlike fromValue(string) and the values property to access the array of symbols.\n\nNote that the values array is frozen, as is each symbol. The returned object is \n__not__ frozen, as to allow the user to modify it (i.e. add \"static\" members).\n\nA more advanced Enum usage is to specify a base Enum symbol class as the second\nparameter. This is the class that each symbol will use. Then, if any symbols\nare given as an Array (instead of string), it will be treated as an array of arguments\nto the base class. The first argument should always be the desired key of that symbol.\n\nNote that __`ordinal`__ is added dynamically\nafter the symbol is created; so it can't be used in the symbol's constructor.\n\n#### Advanced Usage\n\tvar Days = new Enum([ \n\t\t\t'Monday',\n\t\t\t'Tuesday',\n\t\t\t'Wednesday',\n\t\t\t'Thursday',\n\t\t\t'Friday',\n\t\t\t['Saturday', true],\n\t\t\t['Sunday', true]\n\t\t], new Class({\n\t\t\t\n\t\t\tExtends: Enum.Base,\n\n\t\t\tisWeekend: false,\n\n\t\t\tinitialize: function( key, isWeekend ) {\n\t\t\t\t//pass the string value along to parent constructor\n\t\t\t\tthis.parent( key ); \n\t\t\t\t\n\t\t\t\t//get a boolean primitive out of the truthy/falsy value\n\t\t\t\tthis.isWekeend = Boolean(isWeekend);\n\t\t\t}\n\t\t})\n\t);\n\n\tconsole.log( Days.Saturday.isWeekend ); // => true\n\nThis method will throw an error if you try to specify a class which does\nnot extend from `{{#crossLink \"Enum.Base\"}}{{/crossLink}}`.\n\n#### Shorthand\n\nYou can also omit the `new Class` and pass a descriptor, thus reducing the need to \nexplicitly require the Class module. Further, if you are passing a descriptor that\ndoes not have `Extends` defined, it will default to\n`{{#crossLink \"Enum.Base\"}}{{/crossLink}}`.\n\n\tvar Icons = new Enum([ \n\t\t\t'Open',\n\t\t\t'Save',\n\t\t\t'Help',\n\t\t\t'New'\n\t\t], {\n\n\t\t\tpath: function( retina ) {\n\t\t\t\treturn \"icons/\" + this.value.toLowerCase() + (retina ? \"@2x\" : \"\") + \".png\";\n\t\t\t}\n\t\t}\n\t);",
             "is_constructor": 1,
@@ -52,7 +52,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 195,
             "description": "The base type for Enum symbols. Subclasses can extend\nthis to implement more functionality for enum symbols.",
             "is_constructor": 1,
@@ -67,7 +67,7 @@
     },
     "classitems": [
         {
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 101,
             "description": "An array of the enumerated symbol objects.",
             "itemtype": "property",
@@ -76,7 +76,7 @@
             "class": "Enum"
         },
         {
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 117,
             "description": "Looks for the first symbol in this enum whose 'value' matches the specified string. \nIf none are found, this method returns null.",
             "itemtype": "method",
@@ -95,7 +95,7 @@
             "class": "Enum"
         },
         {
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 206,
             "description": "The string value of this symbol.",
             "itemtype": "property",
@@ -104,7 +104,7 @@
             "class": "Enum.Base"
         },
         {
-            "file": "src/jsOOP/Enum.js",
+            "file": "lib/Enum.js",
             "line": 213,
             "description": "The index of this symbol in its enumeration array.",
             "itemtype": "property",

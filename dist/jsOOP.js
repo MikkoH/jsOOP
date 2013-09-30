@@ -1,11 +1,4 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var global=self;// Exports Class, Enum and Interface on the window or global object, for non-module users
-
-var g = typeof window !== "undefined" ? window : global;
-g.Class = require('./jsOOP/Class');
-g.Interface = require('./jsOOP/Interface');
-g.Enum = require('./jsOOP/Enum');
-},{"./jsOOP/Class":2,"./jsOOP/Enum":3,"./jsOOP/Interface":4}],2:[function(require,module,exports){
 var BaseClass = require('./baseClass');
 
 var Class = function( descriptor ) {
@@ -70,7 +63,7 @@ var Class = function( descriptor ) {
 };	
 
 exports = module.exports = Class;
-},{"./baseClass":5}],3:[function(require,module,exports){
+},{"./baseClass":4}],2:[function(require,module,exports){
 var Class = require('./Class');
 
 /**
@@ -305,7 +298,7 @@ Enum.Base = new Class({
 
 exports = module.exports = Enum;
 
-},{"./Class":2}],4:[function(require,module,exports){
+},{"./Class":1}],3:[function(require,module,exports){
 
 var Interface = function( descriptor ) {
 	this.descriptor = descriptor;
@@ -340,7 +333,7 @@ Interface.prototype.compare = function( classToCheck ) {
 };
 
 exports = module.exports = Interface;
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 //Exports a function named 'parent'
 module.exports.parent = function() {
 	// if the current function calling is the constructor
@@ -380,5 +373,12 @@ module.exports.parent = function() {
 
 	return parentFunction.apply( this, arguments );
 };
-},{}]},{},[1])
+},{}],5:[function(require,module,exports){
+var global=self;// Exports Class, Enum and Interface on the window or global object, for non-module users
+
+var g = typeof window !== "undefined" ? window : global;
+g.Class = require('./Class');
+g.Interface = require('./Interface');
+g.Enum = require('./Enum');
+},{"./Class":1,"./Enum":2,"./Interface":3}]},{},[5])
 ;

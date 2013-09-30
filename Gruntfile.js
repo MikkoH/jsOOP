@@ -6,13 +6,13 @@ module.exports = function(grunt) {
 		browserify: {
 			dist: {
 				files: {
-					'dist/jsOOP.js': ['src/export-globals.js']
+					'dist/jsOOP.js': ['lib/index-globals.js']
 				}
 			},
 
 			umd: {
 				files: {
-					'dist/jsOOP.umd.js': ['src/main.js']
+					'dist/jsOOP.umd.js': ['lib/index.js']
 				},
 				options: {
 					standalone: 'jsOOP'
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				version: '<%= pkg.version %>',
 				url: '<%= pkg.homepage %>',
 				options: {
-					paths: 'src/',
+					paths: 'lib/',
 					// themedir: 'path/to/custom/theme/',
 					outdir: 'doc/'
 				}
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 		},
 
 		jshint: {
-			files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+			files: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {

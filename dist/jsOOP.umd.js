@@ -378,15 +378,15 @@ module.exports.parent = function() {
 //Main entry point to access jsOOP modules
 //Exports Class, Enum, and Interface
 
-var Class = require('./jsOOP/Class'),
-	Enum = require('./jsOOP/Enum'),
-	Interface = require('./jsOOP/Interface');
+var Class = require('./Class'),
+	Enum = require('./Enum'),
+	Interface = require('./Interface');
 
 module.exports = {
 	Class: Class,
 	Enum: Enum,
 	Interface: Interface
 };
-},{"./jsOOP/Class":1,"./jsOOP/Enum":2,"./jsOOP/Interface":3}]},{},[5])(5)
+},{"./Class":1,"./Enum":2,"./Interface":3}]},{},[5])(5)
 });
 ;
