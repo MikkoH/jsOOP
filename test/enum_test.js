@@ -1,3 +1,6 @@
+var Class = require('../lib/Class');
+var Enum = require('../lib/Enum');
+
 //Simple days enum
 var SimpleDays = new Enum([
 	'Monday',
@@ -52,15 +55,16 @@ var Images = new Enum([
 	} 
 );
 
-test( 'Testing Enums', function() {
-	ok( SimpleDays.Monday.value === 'Monday', "SimpleDays value OK" );
-	ok( Days.Monday.value === 'Monday', "Days value OK" );
-	ok( Days.Tuesday !== SimpleDays.Tuesday, "Enum equality OK" );
-	ok( Days.Monday.isWeekend === false, "Days isWeekend OK" );
-	ok( Days.Sunday.isWeekend === true, "Days isWeekend OK #2" );
-	ok( Days.Sunday instanceof Enum.Base, "Enum symbol instanceof Enum.Base" );
-	ok( Days.values.length === 7, "Values is OK" );
-	ok( Days.values[2] === Days.Wednesday && Days.Wednesday.ordinal === 2, "Indices are OK" );
-	ok( Days.fromValue('Monday') === Days.Monday, "fromValue is OK" );
-	ok( Images.zombie.path(true) === 'images/zombie@2x.jpg', 'Shorthand is OK' );
-});
+exports.EnumTest = function( test ){
+	test.ok( SimpleDays.Monday.value === 'Monday', "SimpleDays value OK" );
+	test.ok( Days.Monday.value === 'Monday', "Days value OK" );
+	test.ok( Days.Tuesday !== SimpleDays.Tuesday, "Enum equality OK" );
+	test.ok( Days.Monday.isWeekend === false, "Days isWeekend OK" );
+	test.ok( Days.Sunday.isWeekend === true, "Days isWeekend OK #2" );
+	test.ok( Days.Sunday instanceof Enum.Base, "Enum symbol instanceof Enum.Base" );
+	test.ok( Days.values.length === 7, "Values is OK" );
+	test.ok( Days.values[2] === Days.Wednesday && Days.Wednesday.ordinal === 2, "Indices are OK" );
+	test.ok( Days.fromValue('Monday') === Days.Monday, "fromValue is OK" );
+	test.ok( Images.zombie.path(true) === 'images/zombie@2x.jpg', 'Shorthand is OK' );
+	test.done();
+};

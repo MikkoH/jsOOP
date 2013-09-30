@@ -1,4 +1,15 @@
-;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(e){if("function"==typeof bootstrap)bootstrap("jsoop",e);else if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else if("undefined"!=typeof ses){if(!ses.ok())return;ses.makeJsOOP=e}else"undefined"!=typeof window?window.jsOOP=e():global.jsOOP=e()})(function(){var define,ses,bootstrap,module,exports;
+return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var Class = require('./lib/Class'),
+	Enum = require('./lib/Enum'),
+	Interface = require('./lib/Interface');
+
+module.exports = {
+	Class: Class,
+	Enum: Enum,
+	Interface: Interface
+};
+},{"./lib/Class":2,"./lib/Enum":3,"./lib/Interface":4}],2:[function(require,module,exports){
 var BaseClass = require('./baseClass');
 
 var Class = function( descriptor ) {
@@ -63,7 +74,7 @@ var Class = function( descriptor ) {
 };	
 
 exports = module.exports = Class;
-},{"./baseClass":4}],2:[function(require,module,exports){
+},{"./baseClass":5}],3:[function(require,module,exports){
 var Class = require('./Class');
 
 /**
@@ -298,7 +309,7 @@ Enum.Base = new Class({
 
 exports = module.exports = Enum;
 
-},{"./Class":1}],3:[function(require,module,exports){
+},{"./Class":2}],4:[function(require,module,exports){
 
 var Interface = function( descriptor ) {
 	this.descriptor = descriptor;
@@ -333,7 +344,7 @@ Interface.prototype.compare = function( classToCheck ) {
 };
 
 exports = module.exports = Interface;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 //Exports a function named 'parent'
 module.exports.parent = function() {
 	// if the current function calling is the constructor
@@ -373,12 +384,6 @@ module.exports.parent = function() {
 
 	return parentFunction.apply( this, arguments );
 };
-},{}],5:[function(require,module,exports){
-var global=self;// Exports Class, Enum and Interface on the window or global object, for non-module users
-
-var g = typeof window !== "undefined" ? window : global;
-g.Class = require('./Class');
-g.Interface = require('./Interface');
-g.Enum = require('./Enum');
-},{"./Class":1,"./Enum":2,"./Interface":3}]},{},[5])
+},{}]},{},[1])(1)
+});
 ;

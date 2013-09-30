@@ -1,3 +1,7 @@
+var Class = require('../lib/Class');
+var Interface = require('../lib/Interface');
+
+
 var BaseBaseBaseClass = new Class( {
 	inheritedProp: 0,
 
@@ -106,10 +110,11 @@ var ClassToTest = new Class( {
 
 var instance = new ClassToTest();
 
-test( 'Testing chaining prototype functions', function() {
-	ok( instance.inheritedProp == 3, 'CONSTRUCTOR CHAIN' );
-	ok( instance.functionChain( 1 ) == 8, 'FUNCTION CHAIN' );
-	ok( instance.prop2 == 3, 'GETTER CHAIN' );
+exports.ClassTest = function( test ){
+    test.ok( instance.inheritedProp == 3, 'CONSTRUCTOR CHAIN' );
+	test.ok( instance.functionChain( 1 ) == 8, 'FUNCTION CHAIN' );
+	test.ok( instance.prop2 == 3, 'GETTER CHAIN' );
 	instance.prop2 = 33;
-	ok( instance.prop2 == 33, 'SETTER CHAIN' );
-});
+	test.ok( instance.prop2 == 33, 'SETTER CHAIN' );
+    test.done();
+};

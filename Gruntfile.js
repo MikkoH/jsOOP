@@ -4,15 +4,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		browserify: {
-			dist: {
-				files: {
-					'dist/jsOOP.js': ['lib/index-globals.js']
-				}
-			},
-
 			umd: {
 				files: {
-					'dist/jsOOP.umd.js': ['lib/index.js']
+					'dist/jsOOP.js': ['./index.js']
 				},
 				options: {
 					standalone: 'jsOOP'
@@ -26,8 +20,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'dist/jsOOP.min.js': ['dist/jsOOP.js'],
-					'dist/jsOOP.umd.min.js': ['dist/jsOOP.umd.js']
+					'dist/jsOOP.min.js': ['dist/jsOOP.js']
 				}
 			}
 		},
@@ -46,10 +39,8 @@ module.exports = function(grunt) {
 			}
 		},
 
-		qunit: {
-			//PhantomJS doesn't support Function.prototype.bind
-			//So we can't run the grunt-qunit enum tasks until this is fixed...
-			all: ['test/test-class.html' /*, 'test/test-enum.html'*/]
+		nodeunit: {
+			all: ['test/*.js']
 		},
 
 		jshint: {
@@ -68,13 +59,11 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
+	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-browserify');
 
-	grunt.registerTask('build', ['browserify', 'test', 'uglify', 'yuidoc']);
-	grunt.registerTask('test', ['qunit']);
-
+	grunt.registerTask('build', ['browserify', 'nodeunit', 'uglify', 'yuidoc']);
 	grunt.registerTask('default', ['build']);
 
 };
